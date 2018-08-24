@@ -3,11 +3,9 @@ package br.com.californiamobile.organizze.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.heinrichreimersoftware.materialintro.app.IntroActivity;
 import com.heinrichreimersoftware.materialintro.slide.FragmentSlide;
-
 import br.com.californiamobile.organizze.R;
 import br.com.californiamobile.organizze.config.ConfiguracaoFirebase;
 

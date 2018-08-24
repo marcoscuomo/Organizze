@@ -6,15 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import java.util.List;
-
 import br.com.californiamobile.organizze.R;
 import br.com.californiamobile.organizze.model.Movimentacao;
 
-/**
- * Created by Jamilton Damasceno
- */
 
 public class AdapterMovimentacao extends RecyclerView.Adapter<AdapterMovimentacao.MyViewHolder> {
 
