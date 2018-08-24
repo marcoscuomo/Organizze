@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Organizze</string>
+    <string name="tit_intro1">Organize suas compras de onde estiver</string>
+    <string name="sub_tit_intro1">Simples, rapido e fácil de usar</string>
+    <string name="tit_intro2">Saiba para onde está indo seu dinheiro</string>
+    <string name="sub_tit_intro2">Categorizando seus lançamentos e vendo o destino de cada centavo</string>
+    <string name="tit_intro3">Nunca mais esqueça de pagar uma conta</string>
+    <string name="sub_tit_intro3">Receba alertas quando quiser</string>
+    <string name="tit_intro4">Tudo organizado, no celular ou computador</string>
+    <string name="sn_tit_intro4">Use no seu smartphone ou pelo site</string>
+    <string name="title_activity_principal">PrincipalActivity</string>
+</resources>
