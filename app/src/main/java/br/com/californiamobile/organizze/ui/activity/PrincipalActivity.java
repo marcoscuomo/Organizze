@@ -1,4 +1,4 @@
-package br.com.californiamobile.organizze.activity;
+package br.com.californiamobile.organizze.ui.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,7 +31,7 @@ import java.util.List;
 import br.com.californiamobile.organizze.R;
 import br.com.californiamobile.organizze.model.Movimentacao;
 import br.com.californiamobile.organizze.model.Usuario;
-import br.com.californiamobile.organizze.adapter.AdapterMovimentacao;
+import br.com.californiamobile.organizze.ui.adapter.AdapterMovimentacao;
 import br.com.californiamobile.organizze.config.ConfiguracaoFirebase;
 import br.com.californiamobile.organizze.helper.Base64Custom;
 

@@ -1,4 +1,4 @@
-package br.com.californiamobile.organizze.adapter;
+package br.com.californiamobile.organizze.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

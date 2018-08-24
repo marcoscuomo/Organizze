@@ -1,4 +1,4 @@
-package br.com.californiamobile.organizze.activity;
+package br.com.californiamobile.organizze.ui.activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;

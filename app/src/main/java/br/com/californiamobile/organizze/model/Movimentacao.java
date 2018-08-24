@@ -2,7 +2,6 @@ package br.com.californiamobile.organizze.model;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-
 import br.com.californiamobile.organizze.config.ConfiguracaoFirebase;
 import br.com.californiamobile.organizze.helper.Base64Custom;
 import br.com.californiamobile.organizze.helper.DateCustom;

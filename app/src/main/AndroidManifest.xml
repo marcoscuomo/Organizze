@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.MainActivity">
+        <activity android:name=".ui.activity.MainActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
@@ -18,16 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.LoginActivity" />
-        <activity android:name=".activity.CadastroActivity" />
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity android:name=".ui.activity.CadastroActivity" />
         <activity
-            android:name=".activity.PrincipalActivity"
+            android:name=".ui.activity.PrincipalActivity"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.DespesaActivity"
+        <activity android:name=".ui.activity.DespesaActivity"
             android:theme="@style/DespesaTheme"
             />
-        <activity android:name=".activity.ReceitaActivity"
+        <activity android:name=".ui.activity.ReceitaActivity"
             android:theme="@style/RceitaTheme"
             ></activity>
     </application>

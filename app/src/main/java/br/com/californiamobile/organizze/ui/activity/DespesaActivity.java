@@ -1,4 +1,4 @@
-package br.com.californiamobile.organizze.activity;
+package br.com.californiamobile.organizze.ui.activity;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-
 import br.com.californiamobile.organizze.R;
 import br.com.californiamobile.organizze.model.Movimentacao;
 import br.com.californiamobile.organizze.model.Usuario;
@@ -21,104 +19,80 @@ import br.com.californiamobile.organizze.config.ConfiguracaoFirebase;
 import br.com.californiamobile.organizze.helper.Base64Custom;
 import br.com.californiamobile.organizze.helper.DateCustom;
 
-public class ReceitaActivity extends AppCompatActivity {
+public class DespesaActivity extends AppCompatActivity {
 
-    //Atributos
+    //Aributos
     private TextInputEditText txtData, txtCategoria, txtDescricao;
     private EditText txtValor;
-    private FloatingActionButton fabReceita;
+    private FloatingActionButton fabDespesa;
     private Movimentacao movimentacao;
     private DatabaseReference firebaseRef = ConfiguracaoFirebase.getFirebaseDatabase();
     private FirebaseAuth autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
-    private Double receitaTotal;
-    private Double getReceitaTotal;
+    private Double despesaTotal;
+    //private Double despesaAtualizada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_receita);
+        setContentView(R.layout.activity_despesa);
 
-        //FindViewByids
-        txtValor     = findViewById(R.id.receita_txtValor);
-        txtCategoria = findViewById(R.id.receita_txtCategoria);
-        txtDescricao = findViewById(R.id.receita_txtDescricao);
-        txtData      = findViewById(R.id.receita_txtData);
-        fabReceita   = findViewById(R.id.receita_FAB);
-
+        //FindViewByIds
+        txtValor     = findViewById(R.id.despesa_txtValor);
+        txtData      = findViewById(R.id.despesa_txtData);
+        txtCategoria = findViewById(R.id.despesa_txtCategoria);
+        txtDescricao = findViewById(R.id.despesa_txtDescricao);
+        fabDespesa   = findViewById(R.id.despesa_FAB);
 
 
         txtData.setText(DateCustom.daraAtual());
 
-        recuperarReceitaTotal();
+        recuperarDespesaTotal();
 
-        fabReceita.setOnClickListener(new View.OnClickListener() {
+
+        fabDespesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                salvarReceita();
+                salvarDespesa();
             }
         });
 
 
-
     }
 
-    private void salvarReceita() {
+    public void salvarDespesa() {
 
         if(validarCamposDespesa()){
 
-            Movimentacao movimentacao = new Movimentacao();
 
+            movimentacao = new Movimentacao();
             String data = txtData.getText().toString();
-
             Double valorRecuperado = Double.parseDouble(txtValor.getText().toString());
             movimentacao.setValor(valorRecuperado);
-
             movimentacao.setData( data );
             movimentacao.setCategoria(txtCategoria.getText().toString());
             movimentacao.setDescricao(txtDescricao.getText().toString());
-            movimentacao.setTipo("r");
+            movimentacao.setTipo("d");
 
-            Double receitaAtualizada = receitaTotal + valorRecuperado;
+            Double despesaAtualizada = despesaTotal + valorRecuperado;
 
-            atualizaReceita(receitaAtualizada);
+            atualizaDespesa(despesaAtualizada);
 
             movimentacao.salvar(data);
 
             finish();
+
         }
 
-
     }
 
-    private void atualizaReceita(Double receitaAtualizada) {
+    private void atualizaDespesa(Double despesaAtualizada) {
 
         String emailUsuario = autenticacao.getCurrentUser().getEmail();
         String idUsuario = Base64Custom.codificarBase64Custom(emailUsuario);
         DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
 
-        usuarioRef.child("receitaTotal").setValue(receitaAtualizada);
+        usuarioRef.child("despesaTotal").setValue(despesaAtualizada);
 
-    }
-
-
-    private void recuperarReceitaTotal() {
-
-        String emailUsuario = autenticacao.getCurrentUser().getEmail();
-        String idUsuario = Base64Custom.codificarBase64Custom(emailUsuario);
-        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
-
-        usuarioRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                receitaTotal = usuario.getReceitaTotal();
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
     }
 
@@ -156,4 +130,23 @@ public class ReceitaActivity extends AppCompatActivity {
         }
     }
 
+    public void recuperarDespesaTotal(){
+
+        String emailUsuario = autenticacao.getCurrentUser().getEmail();
+        String idUsuario = Base64Custom.codificarBase64Custom(emailUsuario);
+        DatabaseReference usuarioRef = firebaseRef.child("usuarios").child(idUsuario);
+
+        usuarioRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Usuario usuario = dataSnapshot.getValue(Usuario.class);
+                despesaTotal = usuario.getDespesaTotal();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
