@@ -11,8 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
-        app:elevation="0dp"
-        >
+        app:elevation="0dp">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -53,8 +52,7 @@
             android:src="@drawable/ic_add_white_24dp"
             fab:fab_colorNormal="@color/colorPrimaryReceita"
             fab:fab_label="Receita"
-            fab:fab_size="mini"
-            />
+            fab:fab_size="mini" />
 
 
     </com.github.clans.fab.FloatingActionMenu>
